@@ -6,6 +6,7 @@ build-backend = "hatchling.build"
 name = "fluffyclone"
 authors = [{name="Ulysse Herbach", email="ulysse.herbach@inria.fr"}]
 readme = "README.md"
+dynamic = ["version"]
 
 requires-python = ">=3.10"
 dependencies = [
@@ -13,13 +14,15 @@ dependencies = [
     "matplotlib>=3.4",
     "networkx>=2.6",
 ]
-dynamic = ["version"]
 
 [project.urls]
 Repository = "https://github.com/ulysseherbach/fluffyclone"
 
 [tool.hatch.build.targets.sdist]
 only-include = ["src"]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/fluffyclone"]
 
 [tool.hatch.version]
 source = "vcs"
