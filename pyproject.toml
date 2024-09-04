@@ -4,10 +4,9 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fluffyclone"
-authors = [{name="Ulysse Herbach", email="ulysse.herbach@inria.fr"}]
-readme = "README.md"
 dynamic = ["version"]
-
+authors = [{ name="Ulysse Herbach", email="ulysse.herbach@inria.fr" }]
+readme = "README.md"
 requires-python = ">=3.10"
 dependencies = [
     "numpy>=1.24",
@@ -26,7 +25,7 @@ packages = ["src/fluffyclone"]
 
 [tool.hatch.version]
 source = "vcs"
-raw-options = {local_scheme = "no-local-version"}
+raw-options = { local_scheme="no-local-version" }
 
 [tool.ruff]
 select = ["E", "F", "W"]
