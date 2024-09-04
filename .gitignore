@@ -16,4 +16,4 @@
 *.sublime-workspace
 
 # Working files
-tests.py
+main.py
