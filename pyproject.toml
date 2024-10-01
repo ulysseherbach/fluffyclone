@@ -21,9 +21,6 @@ dependencies = [
 [project.urls]
 Repository = "https://github.com/ulysseherbach/fluffyclone"
 
-[tool.hatch.build.targets.sdist]
-only-include = ["src"]
-
 [tool.hatch.build.targets.wheel]
 packages = ["src/fluffyclone"]
 
