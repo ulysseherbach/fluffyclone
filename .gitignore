@@ -10,10 +10,6 @@
 # Distribution
 *.egg-info
 
-# Editor files
-*.sublime-project
-*.sublime-workspace
-
 # Working files
 main.py
 tests/results
