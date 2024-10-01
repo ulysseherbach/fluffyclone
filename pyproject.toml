@@ -4,9 +4,12 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fluffyclone"
-dynamic = ["version"]
-authors = [{ name="Ulysse Herbach", email="ulysse.herbach@inria.fr" }]
+authors = [
+    { name="Ulysse Herbach", email="ulysse.herbach@inria.fr" },
+]
+description = "Using the weighted uniform distribution over spanning trees"
 readme = "README.md"
+dynamic = ["version"]
 
 requires-python = ">=3.10"
 dependencies = [
