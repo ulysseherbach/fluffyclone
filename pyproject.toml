@@ -4,12 +4,13 @@ build-backend = "hatchling.build"
 
 [project]
 name = "fluffyclone"
+dynamic = ["version"]
+description = "Using the weighted uniform distribution over spanning trees"
+readme = "README.md"
 authors = [
     { name="Ulysse Herbach", email="ulysse.herbach@inria.fr" },
 ]
-description = "Using the weighted uniform distribution over spanning trees"
-readme = "README.md"
-dynamic = ["version"]
+license = "BSD-3-Clause"
 
 requires-python = ">=3.10"
 dependencies = [
@@ -20,6 +21,12 @@ dependencies = [
 
 [project.urls]
 Repository = "https://github.com/ulysseherbach/fluffyclone"
+
+[tool.hatch.build.targets.sdist]
+exclude = [
+    "/.git*",
+    "/*.py",
+]
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/fluffyclone"]
