@@ -14,10 +14,12 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 # -- Options for HTML output -------------------------------------------------
 
-html_theme = 'pydata_sphinx_theme'
+html_baseurl = 'https://ulysseherbach.github.io/fluffyclone/'
 html_static_path = ['_static']
+html_css_files = ['custom.css']
 # html_copy_source = False
 
+html_theme = 'pydata_sphinx_theme'
 html_theme_options = {
     'icon_links': [
         {
