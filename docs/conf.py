@@ -5,12 +5,6 @@
 
 from importlib.metadata import version as get_version
 
-# -- Project information -----------------------------------------------------
-
-project = 'FluffyClone'
-copyright = '2024, Ulysse Herbach'
-author = 'Ulysse Herbach'
-
 # -- General configuration ---------------------------------------------------
 
 extensions = []
@@ -23,6 +17,11 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
 
+# -- Project information -----------------------------------------------------
+
+project = 'FluffyClone'
+copyright = '2024, Ulysse Herbach'
+author = 'Ulysse Herbach'
 
 # -- Dynamic information -----------------------------------------------------
 
