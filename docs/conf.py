@@ -16,6 +16,20 @@ exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
 
 html_theme = 'pydata_sphinx_theme'
 html_static_path = ['_static']
+# html_copy_source = False
+
+html_theme_options = {
+    'icon_links': [
+        {
+            'name': 'GitHub',
+            'url': 'https://github.com/ulysseherbach/fluffyclone',
+            'icon': 'fa-brands fa-github',
+            'type': 'fontawesome',
+        }
+   ],
+   'pygments_light_style': 'default',
+   'pygments_dark_style': 'material',
+}
 
 # -- Project information -----------------------------------------------------
 
