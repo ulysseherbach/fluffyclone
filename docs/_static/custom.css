@@ -11,6 +11,11 @@ html[data-theme="dark"] .hide summary {
     color: #EEFFFF; 
 }
 
+.bd-search {
+    border: 0;
+    border-radius: .5rem;
+}
+
 div.cell details.above-input > summary {
     border-bottom: var(--mystnb-source-border-width) var(--mystnb-source-border-color) solid;
 }
