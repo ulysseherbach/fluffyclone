@@ -1,46 +1,21 @@
-html[data-theme="dark"] .mermaid svg {
-    filter: invert();
+
+a.reference {
+    border: 0;
 }
 
-html[data-theme="dark"] .bd-content div.cell_output img {
-    padding: unset;
+a.reference.external:hover {
+    border: 0;
 }
 
-html[data-theme="dark"] .hide summary {
-    background-color: #29313d !important;
-    color: #EEFFFF; 
+div.sphinxsidebar a {
+    border: 0;
 }
 
-.bd-search {
+h1.logo a:hover {
+    border: 0;
+}
+
+/*.bd-search {
     border: 0;
     border-radius: .5rem;
-}
-
-div.cell details.above-input > summary {
-    border-bottom: var(--mystnb-source-border-width) var(--mystnb-source-border-color) solid;
-}
-
-div.cell details.above-input div.cell_input {
-    border-top: var(--mystnb-source-border-width) var(--mystnb-source-border-color) solid;
-}
-
-.nbinput button.copybtn {
-    top: 0.3em;
-}
-
-.nboutput button.copybtn,
-.cell_output button.copybtn {
-    display: none;
-}
-
-button.btn.version-switcher__button {
-    margin-bottom: unset
-}
-
-div.cell_output tbody tr:nth-child(2n+1){
-    background: unset;
-}
-
-div.cell_output tbody tr:hover {
-    background: rgba(66, 165, 245, 0.2);
-  }
+}*/
