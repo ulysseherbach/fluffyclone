@@ -1,3 +1,4 @@
+/* alabaster theme */
 
 a.reference {
     border: 0;
@@ -15,7 +16,19 @@ h1.logo a:hover {
     border: 0;
 }
 
+div.sphinxsidebar h3 {
+    display: none;
+}
+
+/* pydata_sphinx_theme */
+
 /*.bd-search {
     border: 0;
     border-radius: .5rem;
 }*/
+
+/* sphinx_copybutton */
+
+button.copybtn {
+    font-size: 0.85em;
+}

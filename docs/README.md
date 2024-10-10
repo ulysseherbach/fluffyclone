@@ -5,23 +5,21 @@ depends on something that is deprecated and removed in `3.12`.
 
 ## Install dependencies
 
-From the root of the project you can install the dependencies required for the 
+From the `docs` folder of the project, you can install the dependencies required for the 
 documentation generation by typing:
 
 ```bash
-pip install -r docs/requirements.txt
+pip install -r requirements.txt
 ```
 
-## Build
+## Build website pages
 
 To build the website run the command:
 
 ```bash
-sphinx-build docs docs/_build/html
+sphinx-build . _build
 ```
-
-or go the `docs` folder and run `make html`.
 
 ## Visualize the website
 
-You can open the `docs/_build/html/index.html` file in your browser.
+You can open the `_build/index.html` file in your browser.
