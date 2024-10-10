@@ -9,6 +9,13 @@ This documentation is still a draft.
 :::
 
 
+## Installation
+
+```bash
+pip install fluffyclone --upgrade
+```
+
+
 ## Indexes
 
 * [General Index](genindex)
@@ -17,6 +24,10 @@ This documentation is still a draft.
 
 :::{toctree}
 :hidden:
+:maxdepth: 2
 
-quickstart/index
+quickstart
+clonal_trees
+distributions
+models/index
 :::
