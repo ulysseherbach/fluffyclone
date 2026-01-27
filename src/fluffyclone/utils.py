@@ -1,6 +1,4 @@
-"""
-Various utility functions.
-"""
+"""Various utility functions."""
 import numpy as np
 from itertools import permutations
 from fluffyclone.sampling import random_tree
@@ -35,9 +33,9 @@ def tree_list(n):
     return treelist
 
 def distribution_estim(w, root=0, n_samples=1000,
-    all=False, jit=False, empirical=False):
-    """
-    Empirical distribution using `n_samples` random trees.
+    all=False, jit=False):
+    """Empirical distribution using `n_samples` random trees.
+
     The result is a dictionary {tree: probability} where each tree is
     given in tuple form.
     """
@@ -51,12 +49,9 @@ def distribution_estim(w, root=0, n_samples=1000,
         count[tree] = count.get(tree, 0) + 1
     return {tree: count[tree]/n_samples for tree in count}
 
-def logweight(tree, w):
-    """
-    Compute the log-weight of a tree given parameter alpha.
-    """
-    # print(w)
-    return np.sum([np.log(w[i,j]) for i, li in enumerate(tree) for j in li])
+def logweight(tree, a):
+    """Compute the log-weight of a tree given log-weight parameters."""
+    return np.sum([a[i,j] for i, li in enumerate(tree) for j in li])
 
 def lognorm(w):
     """
@@ -76,7 +71,9 @@ def distribution_exact(w):
     """
     trees = tree_list(w[1:,1:].shape[0])
     logz = lognorm(w)
-    return {tree: np.exp(logweight(tree, w) - logz) for tree in trees}
+    a = np.log(w*(w > 0) + 1*(w == 0))
+    a[w == 0] = -np.inf
+    return {tree: np.exp(logweight(tree, a) - logz) for tree in trees}
 
 def adjacency_matrix(tree):
     """
