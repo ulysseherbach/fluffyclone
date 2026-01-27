@@ -1,6 +1,4 @@
-"""
-Sampling trees using Wilson's method.
-"""
+"""Sampling trees using Wilson's method."""
 import numpy as np
 
 # Core functions
@@ -16,7 +14,6 @@ def random_walk_transition_matrix(w, root):
 
     Parameters
     ----------
-
     w: ndarray
         Matrix of directed edge weights, interpreted as transition rates of
         the random walk. Diagonal elements must be zero (i.e. no self-edge).
@@ -26,7 +23,6 @@ def random_walk_transition_matrix(w, root):
 
     Returns
     -------
-
     p: ndarray
         Transition matrix of the corresponding random walk (Markov chain).
     """
@@ -40,43 +36,43 @@ def random_walk_transition_matrix(w, root):
             if s[i] > 0:
                 p[i] = w[:, i] / s[i]
             else:
-                raise ValueError(f"No edge towards vertex {i}.")
+                msg = f'No edge towards vertex {i}.'
+                raise ValueError(msg)
     return p
 
 def random_walk_step(x, p):
+    """Perform one step of random walk.
+
+    Go from state `x` with transition matrix `p`.
     """
-    Perform one step of random walk from state `x` with transition matrix `p`.
-    """
-    if np.abs(np.sum(p[x]) - 1) > 1e-4:
+    tol = 1e-4
+    if np.abs(np.sum(p[x]) - 1) > tol:
         print(p[x], np.sum(p[x]))
-        raise ValueError("Sum of transition probabilities must be 1.")
+        msg = 'Sum of transition probabilities must be 1.'
+        raise ValueError(msg)
     # # Option 1: basic implementation
     # return np.dot(np.arange(p[x].size), np.random.multinomial(1, p[x]))
     # Option 2: numba-friendly implementation
-    return np.searchsorted(np.cumsum(p[x]), np.random.random(), side="right")
+    return np.searchsorted(np.cumsum(p[x]), np.random.random(), side='right')
 
 def loop_erasure(path):
-    """
-    Compute the loop erasure of a given path.
-    """
+    """Compute the loop erasure of a given path."""
     if path[0] == path[-1]:
         return [path[0]]
-    else:
-        i = np.max(np.arange(len(path))*(np.array(path)==path[0]))
+    i = np.max(np.arange(len(path))*(np.array(path)==path[0]))
     if path[i+1] == path[-1]:
         return [path[0], path[i+1]]
-    else:
-        return [path[0]] + loop_erasure(path[i+1:])
+    return [path[0], *loop_erasure(path[i + 1:])]
 
 def core_random_tree(w, root, step):
-    """
-    Core function for sampling a weighted uniform spanning tree.
-    """
+    """Core function for sampling a weighted uniform spanning tree."""
     # Check weight matrix elements
     if np.any(np.diag(w)):
-        raise ValueError("Diagonal elements must be zero.")
+        msg = 'Diagonal elements must be zero.'
+        raise ValueError(msg)
     if np.any(w < 0):
-        raise ValueError("Edge weights must be nonnegative.")
+        msg = 'Edge weights must be nonnegative.'
+        raise ValueError(msg)
     # Initialization
     m = w.shape[0]
     tree = [[] for i in range(m)]
@@ -92,7 +88,7 @@ def core_random_tree(w, root, step):
         path = [state]
         # Compute a random path that reaches the current tree
         while path[-1] not in v:
-            state = step(path[-1], p)
+            state = int(step(path[-1], p))
             path.append(state)
         path = loop_erasure(path)
         # Append the loop-erased path to the current tree
@@ -115,7 +111,6 @@ def random_tree(w, root=0, jit=False):
 
     Parameters
     ----------
-
     w: ndarray
         Matrix of directed edge weights (nonnegative entries).
         NB: diagonal elements must be zero (i.e. no self-edge).
@@ -129,7 +124,6 @@ def random_tree(w, root=0, jit=False):
 
     Returns
     -------
-
     tree: tuple[tuple]
         Generated tree in tuple form (tree[i] contains children of vertex i).
     """
@@ -139,12 +133,11 @@ def random_tree(w, root=0, jit=False):
         step = random_walk_step_jit
     else:
         step = random_walk_step
-    tree = core_random_tree(w, root, step)
-    return tree
+    return core_random_tree(w, root, step)
 
 
 # Tests
-if __name__ == "__main__":
+if __name__ == '__main__':
 
     # Number of nodes without root
     n = 3
@@ -155,19 +148,19 @@ if __name__ == "__main__":
     w[1,2] = 2
     w[2,1] = 1
     w[1:3,3] = 1
-    print("Weight matrix:")
+    print('Weight matrix:')
     print(w)
 
     # Transition matrix
     p = random_walk_transition_matrix(w, root=0)
-    print("Transition matrix:")
+    print('Transition matrix:')
     print(p)
 
     # Random walk step
     x = 1
-    print("Random step (in-tree):")
+    print('Random step (in-tree):')
     y = random_walk_step(x, p)
-    print(f"{x} -> {y}")
+    print(f'{x} -> {y}')
 
     # Sample a tree
     tree = random_tree(w)
