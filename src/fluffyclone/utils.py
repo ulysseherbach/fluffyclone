@@ -57,7 +57,7 @@ def log_weight_total(w):
     """Natural logarithm of the normalisation constant.
 
     That is, the logarithm of the total weight of all spanning trees
-    of a weighted digraph that are rooted in node 0 given its adjacency
+    of a weighted digraph that are rooted in node 0 given its weight
     matrix. Returns -inf if the total weight is 0.
     """
     l = -w[1:,1:]
