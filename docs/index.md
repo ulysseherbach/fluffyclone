@@ -12,7 +12,7 @@ This documentation is still a draft.
 ## Installation
 
 ```bash
-pip install fluffyclone --upgrade
+pip install fluffyclone
 ```
 
 
